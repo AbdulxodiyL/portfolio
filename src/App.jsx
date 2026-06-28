@@ -307,7 +307,11 @@ export default function App() {
           </div>
           <div className="card-3d-wrapper reveal" ref={wrapRef} onMouseMove={handleTilt} onMouseLeave={resetTilt}>
             <div className="card-3d" ref={cardRef}>
-              <div className="avatar-ring">👨‍💻</div>
+              <div className="avatar-photo-wrap">
+                <div className="avatar-ring-border" />
+                <img src="/avatar.jpg" alt="Abdulxodiy" className="avatar-photo" />
+                <div className="avatar-online" />
+              </div>
               <h3 style={{ textAlign: 'center', fontSize: '1.3rem' }}>Abdulxodiy</h3>
               <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '0.85rem', marginTop: 6 }}>
                 18 yosh · Andijon, O'zbekiston 🇺🇿
