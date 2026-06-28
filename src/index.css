@@ -206,13 +206,33 @@ section {
   opacity: 0; transition: opacity 0.4s;
 }
 .card-3d:hover::before { opacity: 1; }
-.avatar-ring {
-  width: 110px; height: 110px; border-radius: 50%;
+.avatar-photo-wrap {
+  position: relative; width: 140px; height: 140px;
+  margin: 0 auto 24px;
+}
+.avatar-ring-border {
+  position: absolute; inset: -4px; border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.8rem; margin: 0 auto 20px;
-  box-shadow: 0 0 40px rgba(108,99,255,0.5), 0 0 80px rgba(108,99,255,0.2);
-  animation: spin-slow 10s linear infinite;
+  animation: spin-slow 5s linear infinite;
+  z-index: 0;
+}
+.avatar-photo {
+  position: relative; z-index: 1;
+  width: 140px; height: 140px; border-radius: 50%;
+  object-fit: cover; object-position: center top;
+  border: 4px solid var(--dark);
+  display: block;
+  box-shadow: 0 0 40px rgba(108,99,255,0.45), 0 0 80px rgba(108,99,255,0.15);
+  transition: transform 0.4s ease;
+}
+.avatar-photo:hover { transform: scale(1.05); }
+.avatar-online {
+  position: absolute; bottom: 8px; right: 8px; z-index: 2;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #22c55e;
+  border: 3px solid var(--dark);
+  box-shadow: 0 0 8px rgba(34,197,94,0.8);
+  animation: pulse-ring 2s ease infinite;
 }
 .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 24px; }
 .stat {
