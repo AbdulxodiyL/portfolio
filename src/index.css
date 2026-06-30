@@ -219,7 +219,10 @@ section {
 }
 .skill-card:hover { transform: translateY(-7px); border-color: var(--skill-color, var(--primary)); box-shadow: 0 14px 36px rgba(0,0,0,0.12); }
 .skill-card:hover::after { transform: scaleX(1); }
-.skill-icon { font-size: 2.2rem; margin-bottom: 8px; display: block; }
+.skill-icon-wrap {
+  display: flex; align-items: center; justify-content: center;
+  height: 52px; margin-bottom: 10px;
+}
 .skill-name { font-size: 0.84rem; font-weight: 700; margin-bottom: 3px; }
 .skill-level { font-size: 0.67rem; color: var(--muted); margin-bottom: 8px; }
 .skill-bar { height: 3px; background: var(--border); border-radius: 99px; overflow: hidden; }
@@ -242,8 +245,13 @@ section {
   height: 172px; display: flex; align-items: center;
   justify-content: center; position: relative; overflow: hidden;
 }
-.project-emoji { font-size: 3.4rem; position: relative; z-index: 1; transition: transform 0.3s; }
-.project-card:hover .project-emoji { transform: scale(1.1); }
+.project-icon {
+  position: relative; z-index: 1;
+  color: rgba(255,255,255,0.92);
+  transition: transform 0.3s;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+.project-card:hover .project-icon { transform: scale(1.12); }
 .project-overlay {
   position: absolute; inset: 0; background: rgba(8,8,20,0.85);
   backdrop-filter: blur(4px);
