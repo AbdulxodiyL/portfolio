@@ -1,31 +1,42 @@
 import { useState } from 'react'
+import {
+  SiJavascript, SiReact, SiNodedotjs, SiExpress, SiHtml5,
+} from 'react-icons/si'
+import {
+  FaTelegramPlane, FaEnvelope, FaGithub, FaPhone,
+  FaShoppingCart, FaTasks, FaUtensils, FaPalette,
+} from 'react-icons/fa'
+import { BsSun, BsMoon } from 'react-icons/bs'
 
 const SKILLS = [
-  { name: 'JavaScript', icon: '🟨', color: '#f7df1e', level: 85 },
-  { name: 'React.js',   icon: '⚛️',  color: '#61dafb', level: 78 },
-  { name: 'Node.js',    icon: '🟢',  color: '#68a063', level: 75 },
-  { name: 'Express.js', icon: '🚂',  color: '#8888aa', level: 72 },
-  { name: 'HTML / CSS', icon: '🌐',  color: '#e34f26', level: 90 },
-  { name: 'UI / UX',    icon: '🎨',  color: '#a855f7', level: 70 },
+  { name: 'JavaScript', Icon: SiJavascript, color: '#f7df1e', level: 85 },
+  { name: 'React.js',   Icon: SiReact,      color: '#61dafb', level: 78 },
+  { name: 'Node.js',    Icon: SiNodedotjs,  color: '#3c873a', level: 75 },
+  { name: 'Express.js', Icon: SiExpress,    color: '#8888aa', level: 72 },
+  { name: 'HTML / CSS', Icon: SiHtml5,      color: '#e34f26', level: 90 },
+  { name: 'UI / UX',    Icon: FaPalette,    color: '#a855f7', level: 70 },
 ]
 
 const PROJECTS = [
   {
-    icon: '🛒', bg: 'linear-gradient(135deg,#6c63ff,#3b3086)',
+    Icon: FaShoppingCart,
+    bg: 'linear-gradient(135deg,#6c63ff,#3b3086)',
     name: 'E-Commerce Website',
-    tags: [{ label: 'React', color: '#61dafb' }, { label: 'Node.js', color: '#68a063' }, { label: 'MongoDB', color: '#ff6384' }],
+    tags: [{ label: 'React', color: '#61dafb' }, { label: 'Node.js', color: '#3c873a' }, { label: 'MongoDB', color: '#4db33d' }],
     desc: 'Full-featured online store with product catalog, shopping cart, payment system and admin panel.',
     live: '#', github: '#',
   },
   {
-    icon: '📋', bg: 'linear-gradient(135deg,#00d4ff,#0070a8)',
+    Icon: FaTasks,
+    bg: 'linear-gradient(135deg,#00d4ff,#0070a8)',
     name: 'Task Manager App',
     tags: [{ label: 'React', color: '#61dafb' }, { label: 'JavaScript', color: '#f7df1e' }],
     desc: 'Task management app with drag & drop, categories, deadlines and progress tracking.',
     live: '#', github: '#',
   },
   {
-    icon: '🍕', bg: 'linear-gradient(135deg,#ff6584,#c0392b)',
+    Icon: FaUtensils,
+    bg: 'linear-gradient(135deg,#ff6584,#c0392b)',
     name: 'Restaurant Landing Page',
     tags: [{ label: 'HTML/CSS', color: '#e34f26' }, { label: 'JavaScript', color: '#f7df1e' }],
     desc: 'Modern animated landing page with menu, reservations and location sections.',
@@ -34,9 +45,12 @@ const PROJECTS = [
 ]
 
 function SkillCard({ skill }) {
+  const { Icon } = skill
   return (
     <div className="skill-card" style={{ '--skill-color': skill.color }}>
-      <span className="skill-icon">{skill.icon}</span>
+      <div className="skill-icon-wrap">
+        <Icon size={40} style={{ color: skill.color }} />
+      </div>
       <div className="skill-name">{skill.name}</div>
       <div className="skill-level">{skill.level}%</div>
       <div className="skill-bar">
@@ -47,13 +61,16 @@ function SkillCard({ skill }) {
 }
 
 function ProjectCard({ p }) {
+  const { Icon } = p
   return (
     <div className="project-card">
       <div className="project-img" style={{ background: p.bg }}>
-        <span className="project-emoji">{p.icon}</span>
+        <Icon size={56} className="project-icon" />
         <div className="project-overlay">
           <a href={p.live}   className="overlay-btn">↗ View</a>
-          <a href={p.github} className="overlay-btn outline">⌥ GitHub</a>
+          <a href={p.github} className="overlay-btn outline">
+            <FaGithub size={14} /> GitHub
+          </a>
         </div>
       </div>
       <div className="project-body">
@@ -99,8 +116,8 @@ export default function App() {
         </ul>
 
         <div className="nav-right">
-          <button className="theme-toggle" onClick={() => setDark(d => !d)} title="Toggle theme">
-            {dark ? '☀️' : '🌙'}
+          <button className="theme-toggle" onClick={() => setDark(d => !d)}>
+            {dark ? <BsSun size={18} /> : <BsMoon size={18} />}
           </button>
           <button className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(o => !o)}>
             <span /><span /><span />
@@ -213,15 +230,24 @@ export default function App() {
             I reply fast and deliver quality work.
           </p>
           <div className="contact-links">
-            <a href="https://t.me/username"          className="contact-btn tg"><span>✈️</span> Telegram</a>
-            <a href="mailto:chatclaude700@gmail.com" className="contact-btn em"><span>📧</span> Email</a>
-            <a href="https://github.com/AbdulxodiyL" className="contact-btn gh"><span>🐙</span> GitHub</a>
+            <a href="https://t.me/omonboyev_c"              className="contact-btn tg">
+              <FaTelegramPlane size={18} /> Telegram
+            </a>
+            <a href="mailto:oyatilloomonboyev6@gmail.com"    className="contact-btn em">
+              <FaEnvelope size={17} /> Email
+            </a>
+            <a href="https://github.com/AbdulxodiyL"         className="contact-btn gh">
+              <FaGithub size={18} /> GitHub
+            </a>
+            <a href="tel:+998906253539"                      className="contact-btn ph">
+              <FaPhone size={16} /> +998 90 625 35 39
+            </a>
           </div>
         </div>
       </section>
 
       <footer>
-        <p>© 2025 · Abdulxodiy · Andijon, Uzbekistan 🇺🇿</p>
+        <p>© 2025 · Abdulxodiy Omonboyev · Andijon, Uzbekistan 🇺🇿</p>
       </footer>
 
     </div>
